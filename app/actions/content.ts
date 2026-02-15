@@ -17,7 +17,7 @@ export async function updateSiteContent(key: string, value: string) {
         return { error: error.message };
     }
 
-    revalidateTag("content");
+    revalidateTag("content", "max");
     return { success: true };
 }
 

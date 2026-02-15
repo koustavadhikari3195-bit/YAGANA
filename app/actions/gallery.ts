@@ -55,8 +55,8 @@ export async function uploadImage(formData: FormData) {
     }
 
     logger.info("Gallery", "Image uploaded successfully", { file: file.name, category });
-    revalidateTag("gallery");
-    revalidateTag("featured");
+    revalidateTag("gallery", "max");
+    revalidateTag("featured", "max");
     return { success: true };
 }
 
@@ -92,8 +92,8 @@ export async function deleteImage(id: string) {
     }
 
     logger.info("Gallery", "Image deleted", { id });
-    revalidateTag("gallery");
-    revalidateTag("featured");
+    revalidateTag("gallery", "max");
+    revalidateTag("featured", "max");
     return { success: true };
 }
 
@@ -109,8 +109,8 @@ export async function toggleFeatured(id: string, isFeatured: boolean) {
         return { error: error.message };
     }
 
-    revalidateTag("gallery");
-    revalidateTag("featured");
+    revalidateTag("gallery", "max");
+    revalidateTag("featured", "max");
     return { success: true };
 }
 
@@ -126,6 +126,6 @@ export async function updateImageCategory(id: string, category: string) {
         return { error: error.message };
     }
 
-    revalidateTag("gallery");
+    revalidateTag("gallery", "max");
     return { success: true };
 }

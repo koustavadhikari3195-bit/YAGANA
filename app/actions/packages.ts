@@ -26,7 +26,7 @@ export async function createPackage(data: {
         return { error: error.message };
     }
 
-    revalidateTag("packages");
+    revalidateTag("packages", "max");
     return { success: true };
 }
 
@@ -53,7 +53,7 @@ export async function updatePackage(
         return { error: error.message };
     }
 
-    revalidateTag("packages");
+    revalidateTag("packages", "max");
     return { success: true };
 }
 
@@ -69,6 +69,6 @@ export async function deletePackage(id: string) {
         return { error: error.message };
     }
 
-    revalidateTag("packages");
+    revalidateTag("packages", "max");
     return { success: true };
 }

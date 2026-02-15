@@ -44,7 +44,7 @@ export async function uploadFile(formData: FormData) {
         return { error: `Database error: ${dbError.message}` };
     }
 
-    revalidateTag("files");
+    revalidateTag("files", "max");
     return { success: true };
 }
 
@@ -74,6 +74,6 @@ export async function deleteFile(id: string) {
         return { error: error.message };
     }
 
-    revalidateTag("files");
+    revalidateTag("files", "max");
     return { success: true };
 }
